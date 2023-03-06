@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="WorldArtSale.UserControlAuctionItemEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WorldArtSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="511"
+             d:DesignWidth="328"
+             Background="Beige">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />            
+            <RowDefinition Height="35" />
+            <RowDefinition Height="27" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="0.7*" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="2.5*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Title-->
+        <Label Grid.ColumnSpan="2"
+               Content="Titel på kunstværket:"
+               FontSize="12"
+               VerticalContentAlignment="Center"
+               VerticalAlignment="Top"/>
+        <TextBox Grid.ColumnSpan="2"
+                 Grid.Row="1"
+                 Text="{Binding fallbackArt.titel, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="12"
+                 Margin="3"
+                 VerticalContentAlignment="Center"/>
+        
+        <!--Select Art-->
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Content="Det valgte kunstværk:"
+               FontSize="12"
+               VerticalContentAlignment="Center"
+               VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Stretch"
+               Margin="3"
+               Grid.Row="3"
+               Grid.ColumnSpan="2"
+               Source="{Binding fallbackArt.picturePath}"
+               VerticalAlignment="Stretch" />
+        <Button x:Name="ButtonSelectArt"  
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Margin="3"
+                Content="Vælg kunstværk" 
+                Click="ButtonSelectArt_Click"/>
+        
+        <!--Description-->
+        <Label Grid.Row="5"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Content="Beskrivelse af kunstværk:"
+               FontSize="12"
+               VerticalContentAlignment="Center"
+               VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 Margin="5"
+                 Grid.Row="6"
+                 Grid.ColumnSpan="2"
+                 TextWrapping="Wrap"
+                 Text="{Binding fallbackArt.description, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="12"
+                 />
+        
+        <!--IsActive-->
+        <CheckBox Grid.Row="7"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  FontSize="12" 
+                  Content="Is for sale."
+                  IsChecked="{Binding fallbackArt.isActive}"/>
+        
+        <!--Button-->        
+        <Button x:Name="ButtonSaveNewArt"
+                Content="Gem"
+                HorizontalAlignment="Stretch"
+                Margin="3"
+                Grid.Row="8"
+                VerticalAlignment="Stretch" 
+                Click="ButtonSaveNewArt_Click" />
+        <Button x:Name="ButtonCancel"
+                Content="Fortryd"
+                HorizontalAlignment="Stretch"
+                Margin="3"
+                Grid.Row="8"
+                Grid.Column="1"
+                VerticalAlignment="Stretch" 
+                Click="ButtonCancel_Click"/>
+    </Grid>
+</UserControl>
